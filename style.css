@@ -17,10 +17,19 @@ header {
     align-items: center;
 }
 
+.carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+}
+
 .card {
     width: 400px;
     height: 270px;
-    border: 1px solid #4169e1;
+    /* border: 1px solid #4169e1; */
     border-radius: 15px;
     display: flex;
     flex-flow: row wrap;
@@ -28,14 +37,26 @@ header {
     align-items: center;
     cursor: pointer;
     transition: all 1s linear;
-    box-shadow: 1px 1px 3px #4169e186,
-    -2px -2px 3px #4169e186;
-/* // */
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
+    /* box-shadow: 1px 1px 3px #4169e154,
+    -3px -3px 4px #4169e154; */
+    transform: skewX(400px, 300px);
 }
 .card p {
     color: #4169e1;
     font-size: xx-large;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    border: 0;
+    background-position: center;
+    background-size: contain;
+    background-color: inherit;
+}
+.btn1 {
+    background-image: url(images/arrow-circle-left-svgrepo-com.svg);
+}
+.btn2 {
+    background-image: url(images/arrow-circle-right-svgrepo-com.svg);
 }
