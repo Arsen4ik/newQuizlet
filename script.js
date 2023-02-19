@@ -39,12 +39,17 @@ function twist(n){
     // card.style.transform = "rotateX(180deg)"
     // card.firstChild.style.transform += "rotateX(180deg)"
     // card.style.transitionDuration = "1s"
-    card.style.backgroundColor = `rgba(${color}, 0.2)`;
-    card.style.boxShadow = `1px 1px 3px rgba(${color}, 0.1),
-    -3px -3px 4px rgba(${color}, 0.1)`;
-    card.style.border = `1px solid rgb(${color})`;
+    // card.style.backgroundColor = `rgba(${color}, 0.2)`;
+    // card.style.boxShadow = `1px 1px 3px black, 0.5),
+    // -3px -3px 4px black, 0.5)`;
+    // card.style.border = `1px solid rgba(${color}, 0.5)`;
     // card.style.delay = "0.5s"
     // card.style.transition = "rotateX(360deg) 0.5s"
+    card.style.boxShadow = `5px 0px 7px #FF1A8D,
+    -5px -0px 7px #FF1A8D`;
+    setTimeout(() => {
+        card.style.boxShadow = `1px 1px 3px #416ae475, -1px -1px 3px #416ae475`;
+    }, 500)
     if(lang){
     card.firstChild.style.transform = "rotateY(180deg)"
     }
