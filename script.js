@@ -1,23 +1,35 @@
-function getNumber(max = 256, min = 0){
-    return Math.floor(Math.random() * (max - min) + min)
-}
-function getColor(){
-    return `${getNumber()},${getNumber()},${getNumber()}`;
-}
+// function getNumber(max = 256, min = 0){
+//     return Math.floor(Math.random() * (max - min) + min)
+// }
+// function getColor(){
+//     return `${getNumber()},${getNumber()},${getNumber()}`;
+// }
 
-let words = [['pamela', 'арбуз'], ['pamela2', 'арбуз2'], ['pamela3', 'арбуз3'], ['pamela4', 'арбуз4'], ['pamela5', 'арбуз5']]
+let words = []
+function pullArr(n){
+for(let i = 1; i <= n; i++){
+    words.push([`a${i}`, `b${i}`])
+}
+}
+pullArr(35)
 
 let btn1 = document.querySelector('.btn1')
 btn1.style.opacity = "0.3"
 let btn2 = document.querySelector('.btn2')
 let card = document.querySelector('.card')
+let pagenation = document.querySelector('.pagenation')
+for(let i = 1; i <= 10; i++){
+    pagenation.innerHTML += `
+    <p class="queueP">${i}</p>
+    `
+}
 
 let lang = false
 let counter = 0
 btn1.disabled = true
+let trans = 0
 
 function twist(n){
-    let color = getColor()
     counter+=n
     if(counter == 0){
         btn1.disabled = true
@@ -33,25 +45,36 @@ function twist(n){
         btn2.disabled = false
         btn2.style.opacity = "1"
     }
-    // console.log('index:', index)
-    // console.log('in func', counter)
     card.innerHTML = `<p>${words[counter][Number(lang)]}</p>`
-    // card.style.transform = "rotateX(180deg)"
-    // card.firstChild.style.transform += "rotateX(180deg)"
-    // card.style.transitionDuration = "1s"
-    // card.style.backgroundColor = `rgba(${color}, 0.2)`;
-    // card.style.boxShadow = `1px 1px 3px black, 0.5),
-    // -3px -3px 4px black, 0.5)`;
-    // card.style.border = `1px solid rgba(${color}, 0.5)`;
-    // card.style.delay = "0.5s"
-    // card.style.transition = "rotateX(360deg) 0.5s"
-    card.style.boxShadow = `5px 0px 7px #FF1A8D,
-    -5px -0px 7px #FF1A8D`;
+    card.style.boxShadow = `5px 0px 7px #3BF764,
+    -5px -0px 7px #3BF764`;
     setTimeout(() => {
         card.style.boxShadow = `1px 1px 3px #416ae475, -1px -1px 3px #416ae475`;
     }, 500)
     if(lang){
     card.firstChild.style.transform = "rotateY(180deg)"
+    }
+
+    let res = 0
+    let bridge = counter
+    while(bridge >= 10){
+        res++
+        bridge -= 10
+    }
+
+    if(res !== trans || trans > res){
+        trans = res
+        changePagenation(trans)
+    }
+
+}
+
+function changePagenation(n){
+    pagenation.innerHTML = ""
+        for(let i = 1; i <= 10; i++){
+        pagenation.innerHTML += `
+        <p class="queueP">${i + 10 * n}</p>
+        `
     }
 }
 
