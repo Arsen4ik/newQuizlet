@@ -19,10 +19,11 @@ let btn2 = document.querySelector('.btn2')
 let card = document.querySelector('.card')
 let pagenation = document.querySelector('.pagenation')
 for(let i = 1; i <= 10; i++){
-    pagenation.innerHTML += `
-    <p class="queueP">${i}</p>
-    `
+    pagenation.innerHTML += `<p class="queueP">${i}</p>`
 }
+console.log(pagenation.firstChild)
+pagenation.firstChild.style.color = 'white'
+pagenation.firstChild.style.backgroundColor = 'rgb(48, 48, 48)'
 
 let lang = false
 let counter = 0
@@ -66,6 +67,35 @@ function twist(n){
         trans = res
         changePagenation(trans)
     }
+
+
+console.log(pagenation.children[counter-(res*10)])
+// console.log(typeof Number(pagenation.children[counter].innerHTML))
+
+// console.log(counter+1)
+// console.log(res)
+// console.log(res)
+// console.log(typeof pagenation.children[counter].innerHTML)
+// console.log(typeof Number(pagenation.children[counter].innerHTML))
+// console.log(counter)
+// console.log(Number(pagenation.children[counter].innerHTML) == counter+1 ? 'da' : 'no')
+
+    if(n == -1){
+        if(counter+1 < (res+1) * 10){
+            pagenation.children[counter-(res*10)+1].style.color = "rgb(48, 48, 48)"
+            pagenation.children[counter-(res*10)+1].style.backgroundColor = 'inherit'
+
+        }
+    } else {
+        if(counter > res * 10){
+            pagenation.children[counter-(res*10)-1].style.color = "rgb(48, 48, 48)"
+            pagenation.children[counter-(res*10)-1].style.backgroundColor = 'inherit'
+
+        }
+    }
+    
+    pagenation.children[counter-(res*10)].style.color = "white"
+    pagenation.children[counter-(res*10)].style.backgroundColor = 'rgb(48, 48, 48)'
 
 }
 
